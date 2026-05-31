@@ -136,13 +136,14 @@ codebase.
 
 ## License
 
-Apache-2.0 throughout. Upstream-derived files (verbatim and patched) credit
-the TigerBeetle Authors via SPDX headers; BrainGang originals (`lib.zig`,
-the three shims, `build.zig`, tests, `tools/check-manifest.sh`) carry a
-BrainGang copyright SPDX header. Patched files additionally carry an
-`SPDX-FileContributor: BrainGang` line; the exact changes are listed in
-[`UPSTREAM.md`](./UPSTREAM.md) and marked at the patch sites with
-`// braingang port:` comments.
+Apache-2.0 throughout. Upstream-verbatim files credit the TigerBeetle
+Authors via an SPDX header. Patched files carry **two**
+`SPDX-FileCopyrightText` lines — TigerBeetle Authors for the original
+code, BrainGang for the modifications — as Apache-2.0 §4 permits.
+BrainGang originals (`lib.zig`, the three shims, `build.zig`, tests,
+`tools/check-manifest.sh`) carry a single BrainGang copyright header.
+The exact changes are listed in [`UPSTREAM.md`](./UPSTREAM.md) and
+marked at the patch sites with `// braingang port:` comments.
 
 - [`LICENSE-APACHE-2.0`](./LICENSE-APACHE-2.0) — full Apache-2.0 text.
 - [`NOTICE`](./NOTICE) — derived-from attribution and file manifest summary.

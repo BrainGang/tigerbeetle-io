@@ -115,9 +115,11 @@ update this manifest, and re-run `tools/check-manifest.sh`.
 - Zig version: 0.16.0. Upstream pins 0.14.1; the gap was bridged with a
   small number of in-place patches at each call site (see "Patched").
 - Licensing: Apache-2.0 throughout. Every source file carries an SPDX
-  header. Upstream-verbatim and patched files credit `2020-2026 TigerBeetle
-  Authors`; patched files additionally carry `SPDX-FileContributor: 2026
-  BrainGang`. BrainGang originals (`lib.zig`, the three synthesized shims,
-  `build.zig`, `build.zig.zon`, tests, `tools/check-manifest.sh`) carry
+  header. Upstream-verbatim files credit `2020-2026 TigerBeetle Authors`.
+  Patched files carry two `SPDX-FileCopyrightText` lines — `2020-2026
+  TigerBeetle Authors` for the original code and `2026 BrainGang` for
+  the modifications (permitted by the closing paragraph of Apache-2.0 §4). BrainGang
+  originals (`lib.zig`, the three synthesized shims, `build.zig`,
+  `build.zig.zon`, tests, `tools/check-manifest.sh`) carry a single
   `SPDX-FileCopyrightText: 2026 BrainGang`. The root `NOTICE` file lists
   the derived-from attribution and the per-category file manifest.

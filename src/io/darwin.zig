@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-FileCopyrightText: 2020-2026 TigerBeetle Authors
-// SPDX-FileContributor: 2026 BrainGang — see UPSTREAM.md for changes
+// SPDX-FileCopyrightText: 2026 BrainGang
 
 const std = @import("std");
 const posix = std.posix;

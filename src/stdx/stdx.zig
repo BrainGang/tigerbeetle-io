@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-FileCopyrightText: 2020-2026 TigerBeetle Authors
-// SPDX-FileContributor: 2026 BrainGang — see UPSTREAM.md for changes
+// SPDX-FileCopyrightText: 2026 BrainGang
 
 //! Extensions to the standard library -- things which could have been in std, but aren't.
 //!
