@@ -1,5 +1,13 @@
 # tigerbeetle-io
 
+![license: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)
+![zig 0.16](https://img.shields.io/badge/zig-0.16.0-orange.svg)
+![platforms: linux | darwin](https://img.shields.io/badge/platforms-linux%20%7C%20darwin-lightgrey.svg)
+![upstream: TigerBeetle 0.17.4](https://img.shields.io/badge/upstream-TigerBeetle%200.17.4-yellow.svg)
+
+> TigerBeetle's single-threaded async I/O engine, vendored as a Zig 0.16
+> library. `io_uring` on Linux, `kqueue` on Darwin. Zero dependencies.
+
 A BrainGang-curated port of TigerBeetle's single-threaded async I/O engine.
 The substrate that `box`, `relay`, and `gate` share for Linux `io_uring` and
 macOS `kqueue` event loops.
@@ -9,17 +17,26 @@ Upstream: TigerBeetle 0.17.4
 [`UPSTREAM.md`](./UPSTREAM.md) for the precise file manifest, the patches we
 maintain, and the rationale for what was pruned.
 
-## Why TigerStyle
+## Why a separate vendor package
 
-The single-threaded event-loop discipline is the whole point. The main thread
-is either running short callbacks at nanosecond cadence or sleeping inside
-`io_uring_enter` / `kevent` waiting for the kernel — never spinning between
-threads. On Apple Silicon and other core-bounded targets this collapses
-context-switch overhead and idle power to near zero. Hand-rolling that
-loop per service is how it gets diluted; sharing this substrate is how it
-stays disciplined.
+TigerBeetle's I/O loop is the tightest single-threaded async event loop we've
+found for Linux + Darwin, but upstream doesn't ship it as a standalone
+library — it lives inside the consensus database and pulls in VSR,
+superblock, tracing, and the testing harness. Three reasons it's worth
+carving out:
 
-Rules this port enforces:
+1. **One I/O loop, not three.** Without this package, `box`, `relay`, and
+   `gate` would each either reimplement the loop or vendor TigerBeetle
+   whole. Sharing this substrate is how the discipline stays consistent.
+2. **Zig version bridge.** Upstream pins Zig 0.14.1; BrainGang runs on
+   Zig 0.16. The std API churn between those versions needs patches with
+   a single, audited home — see [`UPSTREAM.md`](./UPSTREAM.md).
+3. **Pruned and auditable.** ~232 KB of source after pruning, no third-
+   party dependencies. Every file is upstream-verbatim, patched (each
+   patch site carries a `// braingang port:` comment), or synthesized
+   (each shim has a header explaining the upstream symbols it replaces).
+
+## Rules this port enforces
 
 - Zero external dependencies (no third-party packages, no C libs to link).
 - Zero new dynamic-allocation paths added by BrainGang. Anything upstream
@@ -42,8 +59,15 @@ defer io.deinit();
 ```
 
 `tbio.IO` is the upstream type re-exported unchanged from `src/io.zig`. The
-TigerBeetle method surface (`io.tick`, `io.accept`, `io.recv`, etc.) is what
-you call. See upstream documentation for the API.
+TigerBeetle method surface (`io.accept`, `io.recv`, `io.send`, `io.close`,
+`io.connect`, `io.timeout`, `io.cancel`, `io.run_for_ns`, etc.) is what you
+call.
+
+For the consumer-facing contract — how the Completion + callback model
+works, who owns memory, why the one-in-flight pattern gives you TCP
+backpressure for free, and what anti-patterns break the performance
+promise — read [`USAGE.md`](./USAGE.md). It is the doc to read before
+writing a new consumer.
 
 ## Building
 
