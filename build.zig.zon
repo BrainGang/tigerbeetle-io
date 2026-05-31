@@ -1,0 +1,17 @@
+.{
+    .name = .tigerbeetle_io,
+    .version = "0.0.0-20260531+0.17.4",
+    .fingerprint = 0xd9a00cc8126a3ea4,
+    .minimum_zig_version = "0.16.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "test",
+        "UPSTREAM.md",
+        "BENCH.md",
+        "LICENSE-APACHE-2.0",
+        "README.md",
+        "tools",
+    },
+}
