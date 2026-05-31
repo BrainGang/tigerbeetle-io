@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 // Smoke test for the tigerbeetle_io port.
 //
 // First wave: verify the port compiles, exposes the expected Backend, and

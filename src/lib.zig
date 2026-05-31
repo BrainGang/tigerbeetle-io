@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 // BrainGang library boundary for tigerbeetle_io.
 //
 // Upstream's `src/io.zig` is the IO entry point; this file is the

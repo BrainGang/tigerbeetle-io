@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2020-2026 TigerBeetle Authors
+
 const std = @import("std");
 const assert = std.debug.assert;
 

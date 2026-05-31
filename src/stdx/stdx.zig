@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2020-2026 TigerBeetle Authors
+// SPDX-FileContributor: 2026 BrainGang — see UPSTREAM.md for changes
+
 //! Extensions to the standard library -- things which could have been in std, but aren't.
 //!
 //! Unlike std, the namespacing is relatively flat: `stdx.PRNG` rather than `stdx.random.PRNG`.

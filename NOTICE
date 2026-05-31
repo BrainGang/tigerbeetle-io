@@ -1,0 +1,32 @@
+tigerbeetle-io
+Copyright 2026 BrainGang
+
+This product includes software developed at TigerBeetle
+(https://github.com/tigerbeetle/tigerbeetle), licensed under
+the Apache License, Version 2.0.
+
+The following files are derived from TigerBeetle 0.17.4:
+
+  Verbatim (bit-for-bit identical to upstream):
+    src/io/common.zig
+    src/io/linux.zig
+    src/list.zig
+    src/stdx/time_units.zig
+    src/stdx/windows.zig
+
+  Patched (modified by BrainGang; see UPSTREAM.md for the change manifest
+  and `// braingang port:` markers in each file for the patch sites):
+    src/io.zig
+    src/io/darwin.zig
+    src/queue.zig
+    src/time.zig
+    src/stdx/stdx.zig
+
+All other files are BrainGang originals, including the package boundary
+(src/lib.zig), the three minimal shims (src/constants.zig, src/trace.zig,
+src/vsr/superblock.zig), the build scripts (build.zig, build.zig.zon),
+the smoke tests (test/), and the manifest verification tool
+(tools/check-manifest.sh).
+
+The full upstream-vs-local file manifest, including the rationale for what
+was pruned and what was synthesized, lives in UPSTREAM.md.

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 BrainGang
+
 # Verify the local SHA of upstream-verbatim files in the tigerbeetle-io port
 # matches the upstream SHAs recorded here.
 #

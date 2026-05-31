@@ -84,10 +84,12 @@ root `.zig-version` file.
 ## What's in here
 
 - `src/io.zig` — upstream entry point (1 patch: drop Windows branch).
-- `src/io/{common,darwin,linux}.zig` — upstream backends, untouched.
+- `src/io/{common,linux}.zig` — upstream backends, untouched.
+- `src/io/darwin.zig` — upstream Darwin backend, small Zig 0.16 std-API patches.
 - `src/queue.zig`, `src/time.zig`, `src/list.zig` — upstream peer modules
   (small patches to drop test blocks that referenced pruned submodules).
-- `src/stdx/{stdx,time_units,windows}.zig` — upstream stdx, pruned.
+- `src/stdx/{time_units,windows}.zig` — upstream stdx, verbatim.
+- `src/stdx/stdx.zig` — upstream stdx, pruned and Zig 0.16-patched.
 - `src/constants.zig`, `src/trace.zig`, `src/vsr/superblock.zig` — BrainGang
   shims that expose only the symbols the IO closure actually uses, so we
   don't drag the TigerBeetle consensus protocol and tracing subsystem into
@@ -98,7 +100,13 @@ root `.zig-version` file.
 
 ## License
 
-Apache-2.0 for upstream-derived files (verbatim and patched). BrainGang-
-authored files (`lib.zig`, the three shims, `build.zig`, tests, this
-README) follow the project's overall license. `LICENSE-APACHE-2.0` is
-preserved in this directory.
+Apache-2.0 throughout. Upstream-derived files (verbatim and patched) credit
+the TigerBeetle Authors via SPDX headers; BrainGang originals (`lib.zig`,
+the three shims, `build.zig`, tests, `tools/check-manifest.sh`) carry a
+BrainGang copyright SPDX header. Patched files additionally carry an
+`SPDX-FileContributor: BrainGang` line; the exact changes are listed in
+[`UPSTREAM.md`](./UPSTREAM.md) and marked at the patch sites with
+`// braingang port:` comments.
+
+- [`LICENSE-APACHE-2.0`](./LICENSE-APACHE-2.0) — full Apache-2.0 text.
+- [`NOTICE`](./NOTICE) — derived-from attribution and file manifest summary.

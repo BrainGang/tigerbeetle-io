@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 // BrainGang minimal shim — NOT a verbatim copy of upstream `src/constants.zig`.
 //
 // Upstream's `src/constants.zig` (TigerBeetle 0.17.4) imports `vsr.zig` (the

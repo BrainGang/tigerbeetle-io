@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2020-2026 TigerBeetle Authors
+
 //! Code shared across several IO implementations, because, e.g., it is expressible via POSIX layer.
 const builtin = @import("builtin");
 const std = @import("std");

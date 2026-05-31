@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 .{
     .name = .tigerbeetle_io,
     .version = "0.0.0-20260531+0.17.4",
@@ -8,10 +11,11 @@
         "build.zig.zon",
         "src",
         "test",
-        "UPSTREAM.md",
-        "BENCH.md",
-        "LICENSE-APACHE-2.0",
-        "README.md",
         "tools",
+        "LICENSE-APACHE-2.0",
+        "NOTICE",
+        "README.md",
+        "UPSTREAM.md",
+        "USAGE.md",
     },
 }

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 // BrainGang minimal shim — NOT a verbatim copy of upstream `src/trace.zig`.
 //
 // Upstream's `src/trace.zig` (TigerBeetle 0.17.4) is a ~20KB tracing subsystem

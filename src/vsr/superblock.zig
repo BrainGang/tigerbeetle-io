@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 BrainGang
+
 // BrainGang minimal shim — NOT a verbatim copy of upstream `src/vsr/superblock.zig`.
 //
 // `io/linux.zig` line 1859 references `superblock_zone_size` from this module:
