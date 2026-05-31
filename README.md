@@ -98,6 +98,42 @@ root `.zig-version` file.
 - `test/tcp_echo.zig` — smoke tests.
 - `UPSTREAM.md` — full file manifest and sync procedure.
 
+## Staying in sync with upstream
+
+When TigerBeetle ships a new release and you want to bring it forward in
+this port, follow the 7-step procedure in
+[`UPSTREAM.md`](./UPSTREAM.md#sync-procedure-for-future-upstream-bumps).
+The short version:
+
+1. Update the upstream tag, commit SHA, and dates at the top of `UPSTREAM.md`.
+2. Diff the upstream-verbatim files against the new upstream and copy them
+   over. `tools/check-manifest.sh` against an upstream checkout will catch
+   any SHA drift.
+3. For each patched file, re-apply the named patches — every patch site
+   carries a `// braingang port:` marker so they're easy to find.
+4. Audit the three synthesized shims (`constants.zig`, `trace.zig`,
+   `vsr/superblock.zig`): if upstream's IO closure now references new
+   symbols from any of these namespaces, extend the shim accordingly.
+5. `zig build test` from this directory; the smoke tests assert the
+   right backend compiles in for the host platform.
+
+If the new upstream diverges from this port further than the current
+patch budget can absorb cleanly, the honest move is to forgo the bump
+and document the divergence — or to fork upstream rather than continue
+porting.
+
+## Credits
+
+This port stands entirely on
+[TigerBeetle](https://github.com/tigerbeetle/tigerbeetle)'s work. The
+single-threaded IO discipline, the `io_uring` and `kqueue` backends, the
+intrusive queue and list, the stdx peer modules — all of it is the
+TigerBeetle team's design and code. BrainGang's contribution is
+mechanical: prune to the IO closure, bridge Zig 0.14.1 → 0.16, and write
+the three shims that let the IO compile without the rest of the
+TigerBeetle database core. To learn the real thing, read the upstream
+codebase.
+
 ## License
 
 Apache-2.0 throughout. Upstream-derived files (verbatim and patched) credit
